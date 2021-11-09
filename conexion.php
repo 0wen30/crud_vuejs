@@ -1,6 +1,6 @@
 <?php
 
-class ApptivaDB{
+class BDD{
 
     private $host = "localhost";
     private $usuario = "root";

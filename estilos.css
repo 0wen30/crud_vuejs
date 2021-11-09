@@ -1,0 +1,38 @@
+
+body{
+    background: url(img/bg.jpg);
+    background-size: cover;
+}
+#app{
+    background: white;
+    color: black;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+}
+.contenedor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+.modal{
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 600px;
+    margin: 50px auto;
+}
+.close{
+    float: right;
+}
+h1{
+    background: blue;
+    color: white;
+    text-align: center;
+    margin: 0;
+}

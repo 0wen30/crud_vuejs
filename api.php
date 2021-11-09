@@ -2,7 +2,7 @@
 
 require_once "conexion.php";
 
-$user = new ApptivaDB();
+$user = new BDD();
 
 $accion = "mostrar";
 $res = ["error"=>false];
@@ -41,18 +41,18 @@ switch ($accion) {
         }
         break;
     case 'editar':
-        $id = $_POST['id'];
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        $id = $_POST['eid'];
+        $nombre = $_POST['enombre'];
+        $descripcion = $_POST['edescripcion'];
         $foto = "";
 
-        if (isset($_FILES['foto']['name'])) {
-            $foto = $_FILES['foto']['name'];
+        if (isset($_FILES['efoto']['name'])) {
+            $foto = $_FILES['efoto']['name'];
 
             $target_dir = "img/";
             $target_file = $target_dir.basename($foto);
-            move_uploaded_file($_FILES['foto']['tmp_name'],$target_file);
-            $foto =",foto='".$foto = $_FILES['foto']['name']."'";
+            move_uploaded_file($_FILES['efoto']['tmp_name'],$target_file);
+            $foto =",foto='".$foto = $_FILES['efoto']['name']."'";
         }
 
         $data = "nombre='".$nombre."',descripcion='".$descripcion."','".$foto."'";
@@ -66,7 +66,16 @@ switch ($accion) {
         }
         break;
     case 'eliminar':
-        $res['mensaje'] = "eliminar";
+        $id = $_POST['did'];
+
+        $u = $user->borrar("paisajes","id=".$id);
+
+        if ($u) {
+            $res['mensaje'] = "Se ha eliminado";
+        }else{
+            $res['mensaje'] = 'error al eliminar';
+            $res['error'] = true;
+        }
         break;
 }
 
